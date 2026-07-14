@@ -1,6 +1,7 @@
 // Footer.jsx — edit company details / socials here.
 import { Link } from "@tanstack/react-router";
-import { Wifi, Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+import logoAsset from "@/assets/atinlogo.jpg.asset.json";
 
 export default function Footer() {
   return (
@@ -8,11 +9,8 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-14 md:px-6">
         <div className="grid gap-10 md:grid-cols-4">
           <div>
-            <div className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-brand">
-                <Wifi className="h-5 w-5 text-primary-foreground" />
-              </div>
-              <div className="font-display font-bold">Akola Telecom</div>
+            <div className="rounded-lg bg-white p-3 inline-block">
+              <img src={logoAsset.url} alt="Akola Telecom & IP Networks logo" className="h-14 w-auto" />
             </div>
             <p className="mt-4 text-sm opacity-80">
               Trusted broadband, networking and IT partner in Akola since 2004.
