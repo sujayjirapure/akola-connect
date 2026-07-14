@@ -90,7 +90,7 @@ export default function Header() {
   );
 }
 
-function NavLink({ to, children }: { to: string; children: React.ReactNode }) {
+function NavLink({ to, children }) {
   return (
     <Link
       to={to}
@@ -102,7 +102,7 @@ function NavLink({ to, children }: { to: string; children: React.ReactNode }) {
   );
 }
 
-function MobileLink({ to, children, onClick }: { to: string; children: React.ReactNode; onClick: () => void }) {
+function MobileLink({ to, children, onClick }) {
   return (
     <Link
       to={to}
@@ -113,3 +113,4 @@ function MobileLink({ to, children, onClick }: { to: string; children: React.Rea
     </Link>
   );
 }
+
