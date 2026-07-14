@@ -180,7 +180,7 @@ function Contact() {
   );
 }
 
-function Field({ label, value, onChange, type = "text", maxLength }) {
+function Field({ label, value, onChange, type = "text", maxLength }: { label: string; value: string; onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; type?: string; maxLength?: number }) {
   return (
     <div>
       <label className="mb-1.5 block text-sm font-medium text-foreground">{label}</label>
@@ -195,7 +195,7 @@ function Field({ label, value, onChange, type = "text", maxLength }) {
   );
 }
 
-function Select({ label, value, onChange, children }) {
+function Select({ label, value, onChange, children }: { label: string; value: string; onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void; children: React.ReactNode }) {
   return (
     <div>
       <label className="mb-1.5 block text-sm font-medium text-foreground">{label}</label>
@@ -209,3 +209,4 @@ function Select({ label, value, onChange, children }) {
     </div>
   );
 }
+
