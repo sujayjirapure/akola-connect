@@ -1,7 +1,8 @@
 // Header.jsx — top navigation. Rename service items in SERVICES array below.
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X, ChevronDown, Wifi } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import logoAsset from "@/assets/atinlogo.jpg.asset.json";
 
 const SERVICES = [
   { to: "/services/broadband", label: "Broadband Internet", desc: "High-speed fiber for home & business" },
