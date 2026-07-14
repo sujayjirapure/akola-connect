@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import ServiceLayout from "../components/site/ServiceLayout.jsx";
+import ServiceLayout from "../components/site/ServiceLayout";
 
 export const Route = createFileRoute("/services/leased-line")({
   head: () => ({
