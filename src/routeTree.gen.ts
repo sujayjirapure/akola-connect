@@ -9,38 +9,182 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CareersRouteImport } from './routes/careers'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesNetworkingRouteImport } from './routes/services.networking'
+import { Route as ServicesLeasedLineRouteImport } from './routes/services.leased-line'
+import { Route as ServicesItSolutionsRouteImport } from './routes/services.it-solutions'
+import { Route as ServicesCctvRouteImport } from './routes/services.cctv'
+import { Route as ServicesBroadbandRouteImport } from './routes/services.broadband'
 
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesNetworkingRoute = ServicesNetworkingRouteImport.update({
+  id: '/networking',
+  path: '/networking',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesLeasedLineRoute = ServicesLeasedLineRouteImport.update({
+  id: '/leased-line',
+  path: '/leased-line',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesItSolutionsRoute = ServicesItSolutionsRouteImport.update({
+  id: '/it-solutions',
+  path: '/it-solutions',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesCctvRoute = ServicesCctvRouteImport.update({
+  id: '/cctv',
+  path: '/cctv',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesBroadbandRoute = ServicesBroadbandRouteImport.update({
+  id: '/broadband',
+  path: '/broadband',
+  getParentRoute: () => ServicesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/careers': typeof CareersRoute
+  '/contact': typeof ContactRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/services/broadband': typeof ServicesBroadbandRoute
+  '/services/cctv': typeof ServicesCctvRoute
+  '/services/it-solutions': typeof ServicesItSolutionsRoute
+  '/services/leased-line': typeof ServicesLeasedLineRoute
+  '/services/networking': typeof ServicesNetworkingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/careers': typeof CareersRoute
+  '/contact': typeof ContactRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/services/broadband': typeof ServicesBroadbandRoute
+  '/services/cctv': typeof ServicesCctvRoute
+  '/services/it-solutions': typeof ServicesItSolutionsRoute
+  '/services/leased-line': typeof ServicesLeasedLineRoute
+  '/services/networking': typeof ServicesNetworkingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/careers': typeof CareersRoute
+  '/contact': typeof ContactRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/services/broadband': typeof ServicesBroadbandRoute
+  '/services/cctv': typeof ServicesCctvRoute
+  '/services/it-solutions': typeof ServicesItSolutionsRoute
+  '/services/leased-line': typeof ServicesLeasedLineRoute
+  '/services/networking': typeof ServicesNetworkingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/careers'
+    | '/contact'
+    | '/services'
+    | '/services/broadband'
+    | '/services/cctv'
+    | '/services/it-solutions'
+    | '/services/leased-line'
+    | '/services/networking'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/careers'
+    | '/contact'
+    | '/services'
+    | '/services/broadband'
+    | '/services/cctv'
+    | '/services/it-solutions'
+    | '/services/leased-line'
+    | '/services/networking'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/careers'
+    | '/contact'
+    | '/services'
+    | '/services/broadband'
+    | '/services/cctv'
+    | '/services/it-solutions'
+    | '/services/leased-line'
+    | '/services/networking'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  CareersRoute: typeof CareersRoute
+  ContactRoute: typeof ContactRoute
+  ServicesRoute: typeof ServicesRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +192,70 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/networking': {
+      id: '/services/networking'
+      path: '/networking'
+      fullPath: '/services/networking'
+      preLoaderRoute: typeof ServicesNetworkingRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/leased-line': {
+      id: '/services/leased-line'
+      path: '/leased-line'
+      fullPath: '/services/leased-line'
+      preLoaderRoute: typeof ServicesLeasedLineRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/it-solutions': {
+      id: '/services/it-solutions'
+      path: '/it-solutions'
+      fullPath: '/services/it-solutions'
+      preLoaderRoute: typeof ServicesItSolutionsRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/cctv': {
+      id: '/services/cctv'
+      path: '/cctv'
+      fullPath: '/services/cctv'
+      preLoaderRoute: typeof ServicesCctvRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/broadband': {
+      id: '/services/broadband'
+      path: '/broadband'
+      fullPath: '/services/broadband'
+      preLoaderRoute: typeof ServicesBroadbandRouteImport
+      parentRoute: typeof ServicesRoute
+    }
   }
 }
 
+interface ServicesRouteChildren {
+  ServicesBroadbandRoute: typeof ServicesBroadbandRoute
+  ServicesCctvRoute: typeof ServicesCctvRoute
+  ServicesItSolutionsRoute: typeof ServicesItSolutionsRoute
+  ServicesLeasedLineRoute: typeof ServicesLeasedLineRoute
+  ServicesNetworkingRoute: typeof ServicesNetworkingRoute
+}
+
+const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesBroadbandRoute: ServicesBroadbandRoute,
+  ServicesCctvRoute: ServicesCctvRoute,
+  ServicesItSolutionsRoute: ServicesItSolutionsRoute,
+  ServicesLeasedLineRoute: ServicesLeasedLineRoute,
+  ServicesNetworkingRoute: ServicesNetworkingRoute,
+}
+
+const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
+  ServicesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  CareersRoute: CareersRoute,
+  ContactRoute: ContactRoute,
+  ServicesRoute: ServicesRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
