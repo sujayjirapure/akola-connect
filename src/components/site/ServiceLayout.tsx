@@ -2,7 +2,11 @@
 import { Link } from "@tanstack/react-router";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 
-export default function ServiceLayout({ eyebrow, title, tagline, features, plans, ctaText = "Get this service" }) {
+type Feature = { title: string; desc: string };
+type Plan = { name: string; price: string; period: string; perks: string[]; featured?: boolean };
+type Props = { eyebrow: string; title: string; tagline: string; features: Feature[]; plans?: Plan[]; ctaText?: string };
+
+export default function ServiceLayout({ eyebrow, title, tagline, features, plans, ctaText = "Get this service" }: Props) {
   return (
     <>
       <section className="bg-gradient-hero py-20 text-primary-foreground">

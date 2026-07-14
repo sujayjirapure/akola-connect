@@ -12,19 +12,21 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
+type Status = { ok: boolean; msg: string } | null;
+
 function Contact() {
-  const [mode, setMode] = useState("contact"); // "contact" | "complaint"
-  const [status, setStatus] = useState(null);
+  const [mode, setMode] = useState<"contact" | "complaint">("contact");
+  const [status, setStatus] = useState<Status>(null);
   const [form, setForm] = useState({
     name: "", email: "", phone: "", subject: "", message: "",
     accountId: "", issueType: "internet-down", priority: "normal",
   });
 
-  const update = (k) => (e) => setForm({ ...form, [k]: e.target.value });
+  const update = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+    setForm({ ...form, [k]: e.target.value });
 
-  const submit = (e) => {
+  const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Basic validation
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
       setStatus({ ok: false, msg: "Please fill in name, email and message." });
       return;
@@ -34,7 +36,6 @@ function Contact() {
       return;
     }
     // TODO: wire this up to your backend (Node/Express + MongoDB or Lovable Cloud).
-    // For now we just show a success message.
     console.log("[form submit]", { mode, ...form });
     setStatus({
       ok: true,
