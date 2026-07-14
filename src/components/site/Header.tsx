@@ -19,14 +19,14 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-lg">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-brand shadow-elegant">
-            <Wifi className="h-5 w-5 text-primary-foreground" />
-          </div>
-          <div className="leading-tight">
-            <div className="font-display text-base font-bold text-brand">Akola Telecom</div>
-            <div className="text-[10px] uppercase tracking-widest text-muted-foreground">& IP Networks</div>
-          </div>
+        <Link to="/" className="flex items-center gap-3">
+          <img
+            src={logoAsset.url}
+            alt="Akola Telecom & IP Networks Pvt Ltd logo"
+            width={160}
+            height={56}
+            className="h-12 w-auto md:h-14"
+          />
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
